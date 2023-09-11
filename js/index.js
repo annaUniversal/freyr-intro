@@ -35,6 +35,7 @@ messageForm.addEventListener('submit', (event) =>{
     removeButton.innerHTML = 'remove';
     removeButton.type = 'button';
 
+    // Clicking the Remove button reboves the record from the array of messages 
     removeButton.addEventListener('click', (event) => {
         //messageList.removeChild(newMessage);
         const entry = removeButton.parentNode;
@@ -59,26 +60,63 @@ footerContent.innerHTML = textC;
 containerF.appendChild(footerContent);
 
 // Adding progects from github
-var githubRequest = new XMLHttpRequest();
-githubRequest.open("GET", "https://api.github.com/users/annaUniversal/repos");
-githubRequest.send();
 
-githubRequest.addEventListener('load', (e) => {
-    var repositories = JSON.parse(githubRequest.response);
-    console.log(repositories);
+// Create a new instance of XMLHttpRequest to make a request, configuring it and sending the configuration 
+//var githubRequest = new XMLHttpRequest();
+//githubRequest.open("GET", "https://api.github.com/users/annaUniversal/repos");
+//githubRequest.send();
 
-    var projectSection = document.getElementById('projects');
-    var projectList = projectSection.querySelector('ul');
+// Adding an event listener to the githubRequest object for the 'load' event
+function getListOfRepos(repositories){
+    //githubRequest.addEventListener('load', (e) => {
+        //var repositories = JSON.parse(githubRequest.response);
+        console.log(repositories);
 
-    for (var i = 0; i < repositories.length; i += 1){
-        var project = document.createElement('li');
-        project.innerHTML  = `<a href = "https://github.com/${repositories[i].full_name}"> ${repositories[i].name}</a>
-        Created ${repositories[i].created_at.slice(0, 4)}`;
-    
-        projectList.appendChild(project);
-       
-    }  
+        // Grabbing 'projects' section from the DOM and insering them in the list
+        var projectSection = document.getElementById('projects');
+        var projectList = projectSection.querySelector('ul');
 
-});
+        // Creation list of the available reposetories
+        for (var i = 0; i < repositories.length; i += 1){
+            var project = document.createElement('li');
+            // Setting the innerHTML of the list item to display repository name (as a link) and creation year        
+            project.innerHTML  = `<a href = "https://github.com/${repositories[i].full_name}"> ${repositories[i].name}</a>
+            Created ${repositories[i].created_at.slice(0, 4)}`;
+        
+            // Appending the created list item to the project list
+            projectList.appendChild(project);
+        
+        }      
+    //});
+};
+
+//Checking if response is resolved or rejected.
+
+// used promisses for checking
+/*function checkStatus(response) {
+    if(response.ok){
+      return Promise.resolve(response);
+    } else {
+      return Promise.reject(new Error(response.statusText));
+    }
+  }
+*/
+
+function checkStatus(response){
+    if (response.ok){
+        return response.json()
+    } else {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+}
+
+fetch("https://api.github.com/users/annaUniversal/repos")
+    .then(checkStatus)
+    //.then(response => response.json())
+    .then(getListOfRepos)
+    .catch(error => {
+        console.error("There was an error fetching data:", error);
+    });
+
    
         
