@@ -11,24 +11,29 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
         <link href="css/index.css" rel="stylesheet">
         <link href="css/grid.css" rel="stylesheet">
-        
+        <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
     <body>
         <div class="body-grid">
-            <header>
-                <nav>
+            <header class="topnav">
+                <nav id="myLinks">
                     <a href = "#about">About</a>
                     <a href = "#experience">Experience</a>
                     <a href = "#skills">Skills</a>
                     <a href = "#projects">Projects</a>
                     <a href = "#connect">Connect</a>
                 </nav>
+                <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+                <a href="javascript:void(0);" class="icon" onclick="bMenu()">
+                    <i class="fa fa-bars"></i>
+                </a>
             </header>     
                 
             <section class="image-grid">
                 <h1>Anna Gerhardt</h1>
-                <img src="img\AnnaG.jpg" width="150" alt="Photo of Anna" title="Photo of Anna Gerhardt">
+                <img src="img\AnnaG.jpg" width="150" alt="Photo of Anna"  class = "photo" title="Photo of Anna Gerhardt">
             </section>
 
             <section id= "about" class="about-grid">
@@ -78,7 +83,7 @@
                     <nav>
                         <a href="https://github.com/annaUniversal" target="_blank" title="GitHub" rel="noopener noreferrer">GitHub</a><br>
                         <a href="https://www.linkedin.com/in/annager" target="_blank" title="LinkedIn" rel="noopener noreferrer">LinkedIn</a>
-                        <p><strong>Email: </strong><a href="mailto:anna.universal@yahoo.com?subject=Connection%20from%20portfolio">anna.universal@yahoo.com</a></p>
+                        <p><strong>Email: </strong><a href="mailto:anna.universal@yahoo.com?subject=Connection%20from%20portfolio">Send a email</a></p>
                     </nav>
                 </div>
             </section>

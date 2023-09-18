@@ -48,17 +48,6 @@ messageForm.addEventListener('submit', (event) =>{
     event.target.reset();
 });
 
-
-// Adding copyright in the footer
-const today = new Date();
-const thisYear = today.getFullYear();
-
-const containerF = document.querySelector('#containerF');
-const footerContent = document.createElement('p');
-const textC = `<small>&#169; Anna Gerhardt ${thisYear}</small>`;
-footerContent.innerHTML = textC;
-containerF.appendChild(footerContent);
-
 // Adding progects from github
 
 // Create a new instance of XMLHttpRequest to make a request, configuring it and sending the configuration 
@@ -119,4 +108,38 @@ fetch("https://api.github.com/users/annaUniversal/repos")
     });
 
    
-        
+  /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
+function bMenu() {
+    var listMenu = document.getElementById("myLinks");
+    if (listMenu.style.display === "block") {
+      listMenu.style.display = "none";
+    } else {
+      listMenu.style.display = "block";
+    }
+  } 
+
+  
+// Adding copyright in the footer
+const today = new Date();
+const thisYear = today.getFullYear();
+
+const containerF = document.querySelector('#containerF');
+const footerContent = document.createElement('p');
+const textC = `<table class = "rtd">
+                    <tr>
+                        <td><small>&#169; Anna Gerhardt ${thisYear}</small></td>
+                        <td>
+                            <a href="https://github.com/annaUniversal" target="_blank" title="GitHub" rel="noopener noreferrer">
+                                <img src="/img/github1.png" alt="Link to Anna's github" title="Github">
+                            </a>
+                            <a href="https://www.linkedin.com/in/annager" target="_blank" title="LinkedIn" rel="noopener noreferrer">
+                                <img src="/img/linkedin.png" alt="Link to Anna's linkedin" title="linkedin">
+                            </a>
+                            <a href="mailto:anna.universal@yahoo.com?subject=Connection%20from%20portfolio">
+                                <img src="/img/mail.png"  alt="Send a email to Anna" title="Email">
+                            </a>
+                        </td>
+                    </tr>
+                </table>`;
+footerContent.innerHTML = textC;
+containerF.appendChild(footerContent);
