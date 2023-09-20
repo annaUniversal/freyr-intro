@@ -74,7 +74,51 @@
 
    
 @media (min-width: 0) and (max-width: 600px){
-  img {
+  /* Styling the navigation menu */
+  .topnav {
+    overflow: hidden;
+    background-color: #c6f5c8;
+    position: relative;
+  }
+
+  /* Hide the links inside the navigation menu (except for logo/home) */
+  .topnav #myLinks {
+    display: none;
+  }
+
+  /* Style navigation menu links */
+  .topnav a {
+    color: #120898;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-align: left;
+    font-size: 17px;
+    display: block;
+  }
+
+  /* Style the hamburger menu */
+  .topnav a.icon {
+    background: #60bf65;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  /* Add a green background color on mouse-over */
+  .topnav a:hover {
+    background-color: #007ab9;
+    color:  #c6f5c8
+  }
+
+  /* Style the active link */
+  .active {
+    background-color: #04AA6D;
+    color: white;
+  }
+  
+  
+  .photo {
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -131,6 +175,10 @@
 
 
 @media (min-width: 601px) and (max-width: 880px){
+  .icon{
+    display: none;
+  }
+
   .body-grid{
       display: grid;
       font-size: 23px;
@@ -153,7 +201,7 @@
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
   
-  img {
+  .photo {
       border-radius: 50%;
       width: 60px;
       height: 60px;
@@ -183,7 +231,11 @@
   }
 }
 
-@media (min-width: 881px) { 
+@media (min-width: 881px) {  
+  .icon{
+    display: none;
+  }
+  
   .body-grid{
     display: grid;
     /* height: calc(100vh - (var(--footer-height) + var(--header-height)));*/
@@ -192,14 +244,14 @@
     grid-gap: 20px;
     grid-template-areas: 
       "header header"
-        "image about"
-        "skills projects"
-        "connect experience"
-        "messages messages"
-        "footer footer"
+      "image about"
+      "skills projects"
+      "connect experience"
+      "messages messages"
+      "footer footer"
   }
 
-  img {
+  .photo {
     border-radius: 50%;
     width: 80px;
     height: 80px;
